@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28809.33
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeesHierachy", "EmployeesHierachy\EmployeesHierachy.csproj", "{37570020-FB72-40C1-8F87-2605BAB8BEFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37570020-FB72-40C1-8F87-2605BAB8BEFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37570020-FB72-40C1-8F87-2605BAB8BEFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37570020-FB72-40C1-8F87-2605BAB8BEFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37570020-FB72-40C1-8F87-2605BAB8BEFB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FBA35A1F-C31C-48A9-AE19-918DB2996542}
+	EndGlobalSection
+EndGlobal
