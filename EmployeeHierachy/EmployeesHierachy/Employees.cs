@@ -111,5 +111,14 @@ namespace EmployeesHierachy
            
         }
 
+        public long managerSalaryBudget(string managerId)
+        {
+            long _mngrBudget=0;
+
+
+
+            return _mngrBudget;
+        }
+
     }
 }
