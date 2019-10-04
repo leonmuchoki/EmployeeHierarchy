@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -8,30 +9,75 @@ namespace EmployeesHierachy
     {
         string _csv_file_path;
         char _csv_separator;
-        public Employees(string csv_path, string csvSeparator)
+        List<string> listEmpIds;
+        List<string> listManagerIds;
+        List<string> listSalaries;
+
+        public Employees(string csv_path, string csvSeparator=",")
         {
             _csv_file_path = csv_path;
             _csv_separator = char.Parse(csvSeparator);
+            ReadAndParseCSV();
+            validateSalaries();
         }
 
-        public void ReadCSVLine()
+        public void ReadAndParseCSV()
         {
             using (var reader = new StreamReader(_csv_file_path))
             {
-                List<string> listEmpIds = new List<string>();
-                List<string> listManagerIds = new List<string>();
-                List<decimal> listSalaries = new List<decimal>();
-                while (!reader.EndOfStream)
+                try
                 {
-                    var line = reader.ReadLine();
-                    var values = line.Split(_csv_separator);
+                    listEmpIds = new List<string>();
+                    listManagerIds = new List<string>();
+                    listSalaries = new List<string>();
+                    while (!reader.EndOfStream)
+                    {
+                        var line = reader.ReadLine();
+                        var values = line.Split(_csv_separator);
 
-                    listEmpIds.Add(values[0]);
-                    listManagerIds.Add(values[1]);
-                    listSalaries.Add(decimal.Parse(values[2]));
+                        listEmpIds.Add(values[0]);
+                        listManagerIds.Add(values[1]);
+                        listSalaries.Add(values[2]);
+                    }
+                }
+                catch(Exception ex)
+                {
                 }
             }
         }
+
+        public bool validateSalaries()
+        {
+            bool isValidInt;
+            int _sal;
+            foreach (var sal in listSalaries)
+            {
+                if (!int.TryParse(sal, out _sal))
+                {
+                    isValidInt = false;
+                    break;
+                }
+            }
+            isValidInt = true;
+
+            return isValidInt;
+        }
+
+        public bool hasOneManager()
+        {
+            bool _hasOneManager;
+            if (listEmpIds.Count != listEmpIds.Distinct().Count())
+            {
+                _hasOneManager = false;
+            }
+            else
+            {
+                _hasOneManager = true;
+            }
+            return _hasOneManager;
+        }
+
+        
 
     }
 }
