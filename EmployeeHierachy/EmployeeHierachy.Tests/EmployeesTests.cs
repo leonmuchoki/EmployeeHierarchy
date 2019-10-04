@@ -37,5 +37,21 @@ namespace EmployeeHierachy.Tests
 
             Assert.False(hasMoreThanOneMngr);
         }
+
+        [Fact]
+        public void returnsFalseIfMoreThanOneCEO()
+        {
+            List<string> managerIdList = new List<string>();
+            managerIdList.Add("1");
+            managerIdList.Add("3");
+            managerIdList.Add("2");
+            managerIdList.Add("");
+            managerIdList.Add("");
+
+            Employees s = new Employees();
+            var hasOneCEO = s.oneCEO(managerIdList);
+
+            Assert.False(hasOneCEO);
+        }
     }
 }
