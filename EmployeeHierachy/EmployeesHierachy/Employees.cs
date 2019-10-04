@@ -20,6 +20,7 @@ namespace EmployeesHierachy
             ReadAndParseCSV();
             validateSalaries();
             oneCEO();
+            managerAlsoAnEmployee();
         }
 
         public void ReadAndParseCSV()
@@ -97,6 +98,17 @@ namespace EmployeesHierachy
                 hasOneCeo = true;
             }
             return hasOneCeo;
+        }
+
+        public bool managerAlsoAnEmployee()
+        {
+            bool mngrIsEmployee = true ;
+            var list1 = listManagerIds.Where(i => !listEmpIds.Contains(i)).ToList();
+            if (list1.Count > 0)
+                mngrIsEmployee = false;
+
+            return mngrIsEmployee;
+           
         }
 
     }
