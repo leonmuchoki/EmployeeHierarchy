@@ -13,12 +13,17 @@ namespace EmployeesHierachy
         List<string> listManagerIds;
         List<string> listSalaries;
 
+        public Employees()
+        {
+
+        }
+
         public Employees(string csv_path, string csvSeparator=",")
         {
             _csv_file_path = csv_path;
             _csv_separator = char.Parse(csvSeparator);
             ReadAndParseCSV();
-            validateSalaries();
+            validateSalaries(listSalaries);
             oneCEO();
             managerAlsoAnEmployee();
         }
@@ -48,7 +53,7 @@ namespace EmployeesHierachy
             }
         }
 
-        public bool validateSalaries()
+        public bool validateSalaries(List<string> listSalaries)
         {
             bool isValidInt;
             int _sal;
