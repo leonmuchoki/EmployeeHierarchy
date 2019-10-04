@@ -22,7 +22,11 @@ namespace EmployeesHierachy
         {
             _csv_file_path = csv_path;
             _csv_separator = char.Parse(csvSeparator);
+
+           
             ReadAndParseCSV();
+
+            //validations
             validateSalaries(listSalaries);
             hasOneManager(listEmpIds);
             oneCEO(listManagerIds);
@@ -117,10 +121,32 @@ namespace EmployeesHierachy
            
         }
 
-        public long managerSalaryBudget(string managerId)
+        public long managerSalaryBudget(string managerId, List<string> _listSalaries)
         {
             long _mngrBudget=0;
 
+            // get employees budgets
+            foreach (var item in listManagerIds.Select((value, i) => new { i, value }))
+            {
+                var value = item.value;
+                var index = item.i;
+                if (value == managerId)
+                {
+                    _mngrBudget += long.Parse(_listSalaries[index]);
+                }
+            }
+
+            // get manager budget:
+            foreach (var item in listEmpIds.Select((value, i) => new { i, value }))
+            {
+                var value = item.value;
+                var index = item.i;
+                if (value == managerId)
+                {
+                    _mngrBudget += long.Parse(_listSalaries[index]);
+                    break;
+                }
+            }
 
 
             return _mngrBudget;
