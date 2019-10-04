@@ -70,10 +70,10 @@ namespace EmployeesHierachy
             return isValidInt;
         }
 
-        public bool hasOneManager()
+        public bool hasOneManager(List<string> _listEmpIds)
         {
             bool _hasOneManager;
-            if (listEmpIds.Count != listEmpIds.Distinct().Count())
+            if (_listEmpIds.Count != _listEmpIds.Distinct().Count())
             {
                 _hasOneManager = false;
             }

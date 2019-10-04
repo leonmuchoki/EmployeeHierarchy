@@ -23,5 +23,19 @@ namespace EmployeeHierachy.Tests
 
             Assert.True(isNotValid);
         }
+
+        [Fact]
+        public void returnsFalseIfEmployeeHasMoreThanOneManager()
+        {
+            List<string> employeeIdList = new List<string>();
+            employeeIdList.Add("1");
+            employeeIdList.Add("2");
+            employeeIdList.Add("2");
+
+            Employees s = new Employees();
+            var hasMoreThanOneMngr = s.hasOneManager(employeeIdList);
+
+            Assert.False(hasMoreThanOneMngr);
+        }
     }
 }
